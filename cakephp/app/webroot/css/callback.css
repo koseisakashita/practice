@@ -1,0 +1,51 @@
+#js-div{
+	width:100px;
+	height:100px;
+	background:yellow;
+	position:absolute;
+	top:0;left:0;
+}
+
+#js-div.is-right{
+animation:right .8s;
+}
+
+#js-div.is-bottom{
+left:100%;
+animation:bottom .8s;
+}
+
+#js-div.is-left{
+	top:100%;
+animation:left .8s;
+}
+
+#js-div.is-top{
+left:0;
+animation:top .8s;
+}
+
+@keyframes right{
+
+	100%{
+		left:100%;
+	}
+}
+
+@keyframes bottom{
+	100%{
+		top:100%;
+	}
+}
+
+@keyframes left{
+	100%{
+		left:0;
+	}
+}
+
+@keyframes top{
+	100%{
+		top:0;
+	}
+}
