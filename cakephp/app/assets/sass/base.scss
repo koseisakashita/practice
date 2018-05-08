@@ -1,0 +1,12 @@
+
+// common-cssファイルの読み込み
+@import "common/configs/normalize.css";
+// @import "common/partial.scss";
+// @import "layout";
+
+// bootstrapファイルの読み込み
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+body{
+	font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;
+}
