@@ -16,10 +16,11 @@
  * @link          https://cakephp.org CakePHP(tm) Project
  * @package       app.Model
  * @since         CakePHP(tm) v 0.2.9
- * @license       https://opensource.org/licenses/mit-license.php MIT Licenseg
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
 App::uses('AppModel', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 
 /**
  * Application model for Cake.
@@ -29,29 +30,17 @@ App::uses('AppModel', 'Model');
  *
  * @package       app.Model
  */
-class AdminModel extends AppModel {
-    public $validate = [
-        'username' => [
-            'required' => [
-                'rule' => 'notBlank',
-                'message' => '名前が空になっています'
-            ]
-        ],
-        'password' => [
-            'required' => [
-                'rule' => 'notBlank',
-                'message' => 'パスワードが空になっています'
-            ]
-        ],
-        'role' => [
-            'valid' => [
-                'rule' => [
-                	'inList', [ 
-                	['admin', 'author']
-                ],
-                'message' => 'Please enter a valid role',
-                'allowEmpty' => false
-            ]
-        ]
-    ];
+class User extends AppModel {
+    public function beforeSave($options = array()) {
+
+        parent::beforeSave($options);
+
+        if (isset($this->data[$this->alias]['password'])) {
+            $passwordHasher = new SimplePasswordHasher();
+            $this->data[$this->alias]['password'] = $passwordHasher->hash($this->data[$this->alias]['password']);
+        }
+
+        return true;
+    }
+
 }

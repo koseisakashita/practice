@@ -1,17 +1,19 @@
 <?php
-	echo $this->Html->css('/app/webroot/css/base.css');
-	echo $this->Html->css('/app/webroot/css/pages/admin/login.css');
+	echo $this->Html->css('../app/webroot/css/pages/admin/login',
+		['inline' => false]
+	);
+	$this->assign('title', 'ログインページ');
 ?>
 
 <div class="login-form">
-	<div class="content">
-		<h1>システムログイン</h1>
-		<?php echo $this->Flash->render('auth'); ?>
+	<div class="section">
+		<h1>Sign In</h1>
 		<?php
 			echo $this->Form->create('User');
 		?>
 
 		<div class="sign-input">
+			<?php echo $this->Flash->render(); ?>
 			<dl>
 				<dt>ログインID</dt>
 				<dd>
@@ -44,15 +46,16 @@
 			</dl>
 			<div class="sign-submit">
 				<?php
-					echo $this->Form->button('ログイン', [
+					echo $this->Form->button('ログインする', [
 						'type' => 'submit',
 						'div' => false,
 						'label' => false,
-						'mode' => 'do',
-						'class' => 'btn btn-primary'
+						'value' => 'do',
+						'class' => 'btn',
+						'name' => 'mode'
 					]);
 				?>
 			</div>
-		<?php echo $this->Form->end(__('Login')); ?>
+		<?php echo $this->Form->end(); ?>
 	</div>
 </div>

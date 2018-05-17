@@ -1,13 +1,14 @@
 .login-form{
+
 	$content-width:400px;
 
-    background: #f5f5f5;
     min-height: 100vh;
     width: 100%;
     min-width: $content-width;
 	display: flex;
 	align-items: center;
-    >.content{
+	background: #e3e3e3;
+    .section{
 		width: $content-width;
 		margin: 0 auto;
 		padding: 25px;
@@ -15,19 +16,30 @@
 		border-radius: 5px;
 		border: 1px solid #D8DDE6;
 	    >h1{
-			margin: 0 0 15px;
+			margin: 0 0 10px;
 			font-size: 20px;
 			padding-bottom: 10px;
-			border-bottom: 1px solid #333;
-			font-weight:500;
+			font-weight: 500;
+			text-align: center;
 	    }
 	    .sign-input{
-	    	dl{
+			>.error{
+				color: #f21313;
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+	    	>dl{
 	    		dt{
 					font-weight:500;
 	    		}
-	    		dd input{
-					height: 40px;
+	    		dd{
+	    			.error-message{
+	    				margin: 3px;
+	    				color: #f21313;
+	    			}
+		    		input{
+						height: 40px;
+		    		}
 	    		}
 	    	}
 		    >.sign-submit{
@@ -35,10 +47,16 @@
 		    	button{
 					color: #FFF;
 					font-size: 16px;
-					background-color: #2e71b5;
 					padding: 12px 16px;
 					font-weight: bold;
 					width: 100%;
+					background: #ff6d4f;
+					border: 1px solid #ff6d4f;
+					&:hover,
+					&:focus{
+						background: #de5e43;
+						border: 1px solid #de5e43;
+					}
 		    	}
 		    }
 	    }
