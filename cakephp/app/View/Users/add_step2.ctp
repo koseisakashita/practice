@@ -2,17 +2,17 @@
     echo $this->Html->css('../app/webroot/css/pages/admin/add',
         ['inline' => false]
     );
-    $this->assign('title', 'ユーザー追加ページ');
+    $this->assign('title', 'ユーザー追加 確認ページ');
 ?>
 
-<div class="user-form">
+<div class="user-form-confirm">
     <div class="section">
 
         <h1>Add User</h1>
 
         <?php echo $this->Form->create('User'); ?>
             <?php echo $this->Form->input('username', [
-                    'type' => 'text',
+                    'type' => 'hidden',
                     'div' => false,
                     'label' => '名前',
                     'placeholder' => 'メールアドレス',
@@ -21,7 +21,7 @@
                 ]);
 
                 echo $this->Form->input('password', [
-                        'type' => 'password',
+                        'type' => 'hidden',
                         'div' => false,
                         'label' => 'パスワード',
                         'placeholder' => 'パスワード',
@@ -29,6 +29,7 @@
                     ]);
 
                 echo $this->Form->input('role', [
+                    'type' => 'hidden',
                     'div' => false,
                     'label' => '権限',
                     'class' => 'form-control',
@@ -37,19 +38,38 @@
                     	'author' => 'Author'
                     ]
                 ]);
-
+            ?>
+            <div class="name">
+                <p>名前</p>
+                <p><?php echo $postData['User']['username'];?></p>
+            </div>
+            <div class="password">
+                <p>パスワード</p>
+                <p>
+                    <?php
+                        $length =  strlen($postData['User']['password']);
+                        for($i = 0;$i < $length;$i++){
+                            echo '*';
+                        }
+                    ?>
+                </p>
+            </div>
+            <div class="role">
+                <p>権限</p>
+                <p><?php echo $postData['User']['role'];?>
+                </p>
+            </div>
+            <?php
                 echo $this->Form->button('追加する', [
-                    'type' => 'submit',
+                    'type' => 'hidden',
                     'div' => false,
                     'label' => false,
-                    'value' => 'confirm',
+                    'value' => 'do',
                     'class' => 'btn',
                     'name' => 'mode'
                     ]
                 );
             ?>
-
         <?php echo $this->Form->end(); ?>
-
     </div>
 </div>

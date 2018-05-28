@@ -33,8 +33,8 @@
 	?>
 </head>
 <body>
+	<?php echo $this->Element('header');?>
 	<div class="container">
-		<?php echo $this->Element('header');?>
 		<div class="content">
 			<?php echo $this->Flash->render(); ?>
 			<?php echo $this->fetch('content'); ?>

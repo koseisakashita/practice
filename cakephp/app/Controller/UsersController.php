@@ -46,25 +46,28 @@ class UsersController extends AppController {
     	$this->layout = 'fnt';
     	// POSTされたデータを取得する。
     	$postData = $this->request->data;
-    	
+
 		// modeの初期化をする。
 		$mode = empty($postData['mode'])? null : $postData['mode'];
 		// ログインのアクションがおこなわれていればmodeにdoを入れる。
 		$mode = ($mode === 'do') ? $mode: 'before';
 
 		// modeがdoであればログイン処理をおこなう
-        if($mode === 'before'){
+		if($mode === 'before'){
+
         	$this->render('login');
+
         } elseif($mode === 'do') {
 
         	// バリデートチェックをする。
         	$validateRes = $this->User->saveAll($postData, ['validate' => 'only']);
 
+        	// バリデートエラーの際はリターンする。
         	if(!$validateRes){
-	            $this->Flash->error('ログインIDとパスワードをご確認ください');
         		return;
         	}
 
+        	// ログインを実行する。
         	if($this->Auth->login()){
 	            $this->redirect($this->Auth->redirect(['action' => 'view']));
         	}else{
@@ -92,16 +95,36 @@ class UsersController extends AppController {
     }
 
     public function add() {
-        if ($this->request->data) {
+    	$this->layout = 'fnt';
+    	$postData = $this->request->data;
+
+    	$this->set('postData', $postData);
+
+		// modeの初期化をする。
+		$mode = empty($postData['mode'])? null : $postData['mode'];
+		// アクションによってmodeの値を調査する。
+		preg_match('/^(confirm|do)$/', $mode, $mode);
+		$mode = !empty($mode) ? $mode[0] : 'before';
+
+        if($mode === 'before'){
+
+        	$this->render('add_step1');
+
+        } elseif($mode === 'confirm'){
+
+			$this->render('add_step2');
+
+        } elseif($mode === 'do'){
+
             $this->User->create();
-            if ($this->User->save($this->request->data)) {
+
+            if ($this->User->save($postData)) {
                 $this->Flash->success('アカウントが追加されました');
                 return $this->redirect([
-                	'action' => 'index'
+                	'action' => 'login'
                 ]);
             }
-            $this->Flash->error(
-                __('The user could not be saved. Please, try again.')
+            $this->Flash->error('ユーザーの追加ができませんでした。'
             );
         }
     }

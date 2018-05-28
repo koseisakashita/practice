@@ -2,10 +2,10 @@
     echo $this->Html->css('../app/webroot/css/pages/admin/add',
         ['inline' => false]
     );
-    $this->assign('title', 'ユーザー追加ページ');
+    $this->assign('title', 'ユーザー追加 入力ページ');
 ?>
 
-<div class="user-form">
+<div class="user-form-add">
     <div class="section">
 
         <h1>Add User</h1>
@@ -38,7 +38,7 @@
                     ]
                 ]);
 
-                echo $this->Form->button('追加する', [
+                echo $this->Form->button('次へ', [
                     'type' => 'submit',
                     'div' => false,
                     'label' => false,

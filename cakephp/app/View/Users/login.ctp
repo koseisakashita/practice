@@ -23,9 +23,8 @@
 							'div' => false,
 							'label' => false,
 							'placeholder' => 'メールアドレス',
-							'maxlength' => "64",
 							'required' => true,
-							'class' => 'form-control'
+							'class' => 'form-control',
 						]);
 					?>
 				</dd>
