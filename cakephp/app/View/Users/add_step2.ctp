@@ -13,30 +13,14 @@
         <?php echo $this->Form->create('User'); ?>
             <?php echo $this->Form->input('username', [
                     'type' => 'hidden',
-                    'div' => false,
-                    'label' => '名前',
-                    'placeholder' => 'メールアドレス',
-                    'required' => true,
-                    'class' => 'form-control',
                 ]);
 
                 echo $this->Form->input('password', [
                         'type' => 'hidden',
-                        'div' => false,
-                        'label' => 'パスワード',
-                        'placeholder' => 'パスワード',
-                        'class' => 'form-control'
                     ]);
 
                 echo $this->Form->input('role', [
                     'type' => 'hidden',
-                    'div' => false,
-                    'label' => '権限',
-                    'class' => 'form-control',
-                    'options' => [
-                    	'admin' => 'Admin',
-                    	'author' => 'Author'
-                    ]
                 ]);
             ?>
             <div class="name">
@@ -59,17 +43,30 @@
                 <p><?php echo $postData['User']['role'];?>
                 </p>
             </div>
-            <?php
-                echo $this->Form->button('追加する', [
-                    'type' => 'hidden',
-                    'div' => false,
-                    'label' => false,
-                    'value' => 'do',
-                    'class' => 'btn',
-                    'name' => 'mode'
-                    ]
-                );
-            ?>
+            <div class="confirm-btns">
+                <?php
+                    echo $this->Form->button('訂正する', [
+                        'type' => 'submit',
+                        'div' => false,
+                        'label' => false,
+                        'value' => 'back',
+                        'class' => 'btn btn-default back',
+                        'name' => 'mode'
+                        ]
+                    );
+                ?>
+                <?php
+                    echo $this->Form->button('追加する', [
+                        'type' => 'submit',
+                        'div' => false,
+                        'label' => false,
+                        'value' => 'do',
+                        'class' => 'btn btn-primary add',
+                        'name' => 'mode'
+                        ]
+                    );
+                ?>
+            </div>
         <?php echo $this->Form->end(); ?>
     </div>
 </div>

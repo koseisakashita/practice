@@ -59,9 +59,10 @@ class UsersController extends AppController {
 
         } elseif($mode === 'do') {
 
+        	// バリデート定義をセットする。
+        	$this->User->validate = $this->User->login_validate;
         	// バリデートチェックをする。
-        	$validateRes = $this->User->saveAll($postData, ['validate' => 'only']);
-
+        	$validateRes = $this->User->saveAll($postData,['validate' => 'only']);
         	// バリデートエラーの際はリターンする。
         	if(!$validateRes){
         		return;
@@ -103,29 +104,55 @@ class UsersController extends AppController {
 		// modeの初期化をする。
 		$mode = empty($postData['mode'])? null : $postData['mode'];
 		// アクションによってmodeの値を調査する。
-		preg_match('/^(confirm|do)$/', $mode, $mode);
+		preg_match('/^(confirm|do|back)$/', $mode, $mode);
 		$mode = !empty($mode) ? $mode[0] : 'before';
 
         if($mode === 'before'){
 
         	$this->render('add_step1');
+			return;
 
         } elseif($mode === 'confirm'){
 
+        	// バリデート定義をセットする。
+        	$this->User->validate = $this->User->user_add_validate;
+        	// バリデートチェックをする。
+        	$validateRes = $this->User->saveAll($postData,['validate' => 'only']);
+
+        	// バリデートエラーの際はリターンする。
+        	if(!$validateRes){
+	        	$this->render('add_step1');
+				return;
+        	}
+
 			$this->render('add_step2');
+			return;
+
+        } elseif($mode === 'back'){
+
+        	$this->render('add_step1');
+			return;
 
         } elseif($mode === 'do'){
+
+        	// バリデートチェックをする。
+        	$this->User->validate = $this->User->user_addValidate;
+        	$validateRes = $this->User->saveAll($postData,['validate' => 'only']);
+        	// バリデートエラーの際はリターンする。
+        	if(!$validateRes){
+        		return;
+        	}
 
             $this->User->create();
 
             if ($this->User->save($postData)) {
-                $this->Flash->success('アカウントが追加されました');
-                return $this->redirect([
-                	'action' => 'login'
-                ]);
+                
+    			$this->render('add_step3');
+				return;
             }
             $this->Flash->error('ユーザーの追加ができませんでした。'
             );
+			return;
         }
     }
 

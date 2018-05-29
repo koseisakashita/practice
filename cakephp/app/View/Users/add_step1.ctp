@@ -11,14 +11,19 @@
         <h1>Add User</h1>
 
         <?php echo $this->Form->create('User'); ?>
-            <?php echo $this->Form->input('username', [
-                    'type' => 'text',
-                    'div' => false,
-                    'label' => '名前',
-                    'placeholder' => 'メールアドレス',
-                    'required' => true,
-                    'class' => 'form-control',
-                ]);
+            <div class="name">
+                名前
+                <?php echo $this->Form->input('username', [
+                        'type' => 'text',
+                        'label' => false,
+                        'div' => false,
+                        'placeholder' => '名前',
+                        'required' => false,
+                        'class' => 'form-control',
+                    ]);
+                ?>
+            </div>
+            <?php
 
                 echo $this->Form->input('password', [
                         'type' => 'password',
@@ -43,7 +48,7 @@
                     'div' => false,
                     'label' => false,
                     'value' => 'confirm',
-                    'class' => 'btn',
+                    'class' => 'btn btn-primary',
                     'name' => 'mode'
                     ]
                 );

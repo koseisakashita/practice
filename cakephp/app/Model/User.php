@@ -31,7 +31,7 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
  * @package       app.Model
  */
 class User extends AppModel {
-    public $validate = [
+    public $login_validate = [
         'username' => [
             'required' => [
                 'rule' => 'notBlank',
@@ -56,7 +56,34 @@ class User extends AppModel {
             ]
         ]
     ];
-	
+
+    public $user_add_validate = [
+        'username' => [
+            'required' => [
+                'rule' => 'notBlank',
+                'message' => '何か入力してください。'
+            ]
+        ],
+        'password' => [
+            'required' => [
+                'rule' => 'notBlank',
+                'message' => '何か入力してください。'
+            ]
+        ],
+        'role' => [
+            'valid' => [
+                'rule' => [
+                    'inList',[
+                        'admin', 'author'
+                    ]
+                ],
+                'message' => 'Please enter a valid role',
+                'allowEmpty' => false
+            ]
+        ]
+    ];
+
+
 	public function beforeSave($options = array()) {
 	    if (isset($this->data[$this->alias]['password'])) {
 	        $passwordHasher = new BlowfishPasswordHasher();
