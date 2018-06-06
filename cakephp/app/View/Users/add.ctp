@@ -25,13 +25,13 @@
                         'div' => false,
                         'label' => 'パスワード',
                         'placeholder' => 'パスワード',
-                        'class' => 'form-control'
+                        'class' => 'form-control',
                     ]);
 
                 echo $this->Form->input('role', [
                     'div' => false,
                     'label' => '権限',
-                    'class' => 'form-control',
+                    'class' => 'form-control input-width220',
                     'options' => [
                     	'admin' => 'Admin',
                     	'author' => 'Author'

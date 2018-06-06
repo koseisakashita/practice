@@ -33,12 +33,12 @@ App::uses('CookieComponent', 'Controller/Component');
  */
 class UsersController extends AppController {
 	public $uses = ['User'];
-	public $components = ['Cookie', 'Auth'];
+	public $components = ['Cookie', 'Auth', 'Security'];
 
     public function beforeFilter() {
         parent::beforeFilter();
         // ユーザー自身による登録とログアウトを許可する
-        $this->Auth->allow('add', 'logout');
+        $this->Auth->allow('add', 'logout', 'index', 'view');
     }
 
     // ログインアクション
@@ -70,7 +70,10 @@ class UsersController extends AppController {
 
         	// ログインを実行する。
         	if($this->Auth->login()){
-	            $this->redirect($this->Auth->redirect(['action' => 'view']));
+	            $this->redirect($this->Auth->redirect([
+                        'controller' => 'posts',
+                        'action' => 'index'
+                    ]));
         	}else{
 	            $this->Flash->error('ログインIDかパスワードが違います');
         	}

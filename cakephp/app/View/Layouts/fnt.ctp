@@ -31,6 +31,10 @@
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
 </head>
 <body>
 	<?php echo $this->fetch('content'); ?>

@@ -20,7 +20,6 @@
  */
 
 App::uses('AppModel', 'Model');
-App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 /**
  * Application model for Cake.
@@ -42,6 +41,10 @@ class User extends AppModel {
             'required' => [
                 'rule' => 'notBlank',
                 'message' => '何か入力してください。'
+            ],
+            'between' => [
+                'rule' => ['lengthBetween', 8, 20],
+                'message' => '8文字以上20文字以内で入力してください。'
             ]
         ],
         'role' => [
@@ -62,12 +65,20 @@ class User extends AppModel {
             'required' => [
                 'rule' => 'notBlank',
                 'message' => '何か入力してください。'
+            ],
+            'maxLength' => [
+                'rule' => ['maxLength', 30],
+                'message' => '20文字以内で入力してください。'
             ]
         ],
         'password' => [
             'required' => [
                 'rule' => 'notBlank',
                 'message' => '何か入力してください。'
+            ],
+            'between' => [
+                'rule' => ['between', 8, 20],
+                'message' => '8文字以上20文字以内で入力してください。'
             ]
         ],
         'role' => [
@@ -77,7 +88,7 @@ class User extends AppModel {
                         'admin', 'author'
                     ]
                 ],
-                'message' => 'Please enter a valid role',
+                'message' => '権限をご確認ください。',
                 'allowEmpty' => false
             ]
         ]
@@ -86,11 +97,8 @@ class User extends AppModel {
 
 	public function beforeSave($options = array()) {
 	    if (isset($this->data[$this->alias]['password'])) {
-	        $passwordHasher = new BlowfishPasswordHasher();
-	        $this->data[$this->alias]['password'] = $passwordHasher->hash(
-	            $this->data[$this->alias]['password']
-	        );
-	    }
+            $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
+        }
 	    return true;
 	}
 

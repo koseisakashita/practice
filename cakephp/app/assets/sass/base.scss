@@ -1,9 +1,10 @@
 
+// bootstrapファイルの読み込み
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
 // common-cssファイルの読み込み
 @import "_common/configs/normalize";
 @import "_common/_base.scss";
 @import "_common/_partial.scss";
 @import "_common/_layout.scss";
 
-// bootstrapファイルの読み込み
-@import "../../../node_modules/bootstrap/scss/bootstrap";

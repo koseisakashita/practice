@@ -8,53 +8,67 @@
 <div class="user-form-add">
     <div class="section">
 
-        <h1>Add User</h1>
+        <h1>ユーザー追加</h1>
 
         <?php echo $this->Form->create('User'); ?>
-            <div class="name">
-                名前
-                <?php echo $this->Form->input('username', [
-                        'type' => 'text',
-                        'label' => false,
+            <dl class="input-name">
+                <dt>名前</dt>
+                <dd>
+                    <?php echo $this->Form->input('username', [
+                            'type' => 'text',
+                            'label' => false,
+                            'div' => false,
+                            'placeholder' => '名前',
+                            'required' => false,
+                            'class' => 'form-control',
+                        ]);
+                    ?>
+                </dd>
+            </dl>
+            <dl class="input-password">
+                <dt>パスワード</dt>
+                <dd>
+                    <?php
+                    echo $this->Form->input('password', [
+                            'type' => 'password',
+                            'div' => false,
+                            'label' => false,
+                            'placeholder' => 'パスワード',
+                            'class' => 'form-control',
+                            'autocomplete' => 'off'
+                        ]);
+                    ?>
+                </dd>
+            </dl>
+            <dl class="input-role">
+                <dt>権限</dt>
+                <dd>
+                    <?php
+                        echo $this->Form->input('role', [
+                            'div' => false,
+                            'label' => false,
+                            'class' => 'input-width180 form-control',
+                            'options' => [
+                            	'admin' => 'Admin',
+                            	'author' => 'Author'
+                            ]
+                        ]);
+                    ?>
+                </dd>
+            </dl>
+            <div class="submit-btn">
+                <?php
+                    echo $this->Form->button('次へ', [
+                        'type' => 'submit',
                         'div' => false,
-                        'placeholder' => '名前',
-                        'required' => false,
-                        'class' => 'form-control',
-                    ]);
+                        'label' => false,
+                        'value' => 'confirm',
+                        'class' => 'btn',
+                        'name' => 'mode'
+                        ]
+                    );
                 ?>
             </div>
-            <?php
-
-                echo $this->Form->input('password', [
-                        'type' => 'password',
-                        'div' => false,
-                        'label' => 'パスワード',
-                        'placeholder' => 'パスワード',
-                        'class' => 'form-control'
-                    ]);
-
-                echo $this->Form->input('role', [
-                    'div' => false,
-                    'label' => '権限',
-                    'class' => 'form-control',
-                    'options' => [
-                    	'admin' => 'Admin',
-                    	'author' => 'Author'
-                    ]
-                ]);
-
-                echo $this->Form->button('次へ', [
-                    'type' => 'submit',
-                    'div' => false,
-                    'label' => false,
-                    'value' => 'confirm',
-                    'class' => 'btn btn-primary',
-                    'name' => 'mode'
-                    ]
-                );
-            ?>
-
         <?php echo $this->Form->end(); ?>
-
     </div>
 </div>

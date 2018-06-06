@@ -20,6 +20,7 @@
  */
 
 App::uses('Controller', 'Controller');
+App::uses('CookieComponent', 'BlowfishPasswordHasher');
 
 /**
  * Application Controller
@@ -47,16 +48,10 @@ class AppController extends Controller {
                 'action' => 'display',
                 'home'
             ),
-            'authenticate' => array(
-                'Form' => array(
-                    'passwordHasher' => 'Blowfish'
-                )
-            ),
         )
     );
 
     public function beforeFilter() {
-        $this->Auth->allow('index', 'view');
     }
 
 }

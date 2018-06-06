@@ -8,7 +8,7 @@
 <div class="user-form-confirm">
     <div class="section">
 
-        <h1>Add User</h1>
+        <h1>ユーザー追加</h1>
 
         <?php echo $this->Form->create('User'); ?>
             <?php echo $this->Form->input('username', [
@@ -23,26 +23,32 @@
                     'type' => 'hidden',
                 ]);
             ?>
-            <div class="name">
-                <p>名前</p>
-                <p><?php echo $postData['User']['username'];?></p>
-            </div>
-            <div class="password">
-                <p>パスワード</p>
-                <p>
+
+            <dl class="name">
+                <dt>名前</dt>
+                <dd>
+                    <?php echo $postData['User']['username'];?>
+                </dd>
+            </dl>
+            <dl class="password">
+                <dt>パスワード</dt>
+                <dd>
                     <?php
                         $length =  strlen($postData['User']['password']);
                         for($i = 0;$i < $length;$i++){
                             echo '*';
                         }
                     ?>
-                </p>
-            </div>
-            <div class="role">
-                <p>権限</p>
-                <p><?php echo $postData['User']['role'];?>
-                </p>
-            </div>
+                </dd>
+            </dl>
+
+            <dl class="password">
+                <dt>権限</dt>
+                <dd>
+                    <?php echo $postData['User']['role'];?>
+                </dd>
+            </dl>
+
             <div class="confirm-btns">
                 <?php
                     echo $this->Form->button('訂正する', [
@@ -61,7 +67,7 @@
                         'div' => false,
                         'label' => false,
                         'value' => 'do',
-                        'class' => 'btn btn-primary add',
+                        'class' => 'btn add',
                         'name' => 'mode'
                         ]
                     );

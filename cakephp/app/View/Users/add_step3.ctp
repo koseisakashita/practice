@@ -18,6 +18,19 @@
             <p>名前</p>
             <p><?php echo $postData['User']['username'];?></p>
         </div>
+
+        <div class="name">
+            <p>パスワード</p>
+            <p>
+                <?php
+                    $length =  strlen($postData['User']['password']);
+                    for($i = 0;$i < $length;$i++){
+                        echo '*';
+                    }
+                ?>
+            </p>
+        </div>
+
         <div class="role">
             <p>権限</p>
             <p><?php echo $postData['User']['role'];?>
