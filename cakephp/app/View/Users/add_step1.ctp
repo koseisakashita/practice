@@ -69,6 +69,14 @@
                     );
                 ?>
             </div>
+            <div class="login-link">
+                <?php
+                    echo $this->Html->link('ログインはこちら', [
+                        'controller' => 'users',
+                        'action' => 'login',
+                    ]);
+                ?>
+            </div>
         <?php echo $this->Form->end(); ?>
     </div>
 </div>

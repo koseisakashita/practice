@@ -86,7 +86,7 @@ class PostsController extends AppController {
             $this->Post->id = $id;
 
             // 
-            $saveRes = $this->Post->save($this->request->data)
+            $saveRes = $this->Post->save($this->request->data);
 
             if ($saveRes) {
                 $this->Flash->success('記事が更新されました。');

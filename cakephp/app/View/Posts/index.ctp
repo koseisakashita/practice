@@ -2,6 +2,7 @@
 	echo $this->Html->css('../app/webroot/css/pages/admin/login',
 		['inline' => false]
 	);
+    echo $this->Html->script('../app/webroot/js/main', ['inline' => false]);
 	$this->assign('title', '投稿一覧');
 ?>
 
@@ -57,3 +58,6 @@
     <?php endforeach; ?>
 
 </table>
+<script>
+    main = new main('テスト')
+</script>

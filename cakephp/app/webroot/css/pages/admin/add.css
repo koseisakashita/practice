@@ -67,6 +67,9 @@
       background-color: #de5e43;
       border-color: #de5e43; }
 
+.user-form-add .login-link {
+  text-align: center; }
+
 /* ------------------------------------------
 // ユーザー追加 STEP2
 --------------------------------------------*/
