@@ -58,6 +58,3 @@
     <?php endforeach; ?>
 
 </table>
-<script>
-    main = new main('テスト')
-</script>

@@ -6583,7 +6583,8 @@ template {
   display: none; }
 
 body {
-  font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif; }
+  font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;
+  box-sizing: border-box; }
 
 .input-width10 {
   width: 10px; }
@@ -6826,12 +6827,69 @@ body {
   width: 800px; }
 
 header {
-  height: 54px;
-  background-color: #262626;
-  z-index: 100;
-  line-height: 54px;
-  margin-bottom: 1px; }
-  header > h1 {
-    font-size: 20px;
-    padding: 15px 20px;
-    color: #fff; }
+  height: 50px;
+  background-color: #005eba;
+  padding: 0 20px; }
+  header > .header-inner {
+    display: flex;
+    align-items: center;
+    width: 960px;
+    margin: 0 auto;
+    font-size: 18px;
+    height: 100%; }
+    header > .header-inner > a {
+      color: #fff; }
+      header > .header-inner > a:hover {
+        text-decoration: none; }
+    header > .header-inner > .header-item {
+      margin-left: auto;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      font-size: 14px;
+      color: #fff;
+      position: relative; }
+      header > .header-inner > .header-item > .link {
+        cursor: pointer;
+        margin-bottom: 4px; }
+        header > .header-inner > .header-item > .link:after {
+          content: '▼';
+          font-size: 11px;
+          margin: 0px 0 2px 3px; }
+      header > .header-inner > .header-item > .menu {
+        display: none;
+        background: #f9f9f9;
+        font-size: 13px;
+        margin: 0;
+        position: absolute;
+        top: 50px;
+        width: 130px;
+        min-height: 40px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.2);
+        overflow: auto;
+        padding: 7px 0; }
+        header > .header-inner > .header-item > .menu.open {
+          display: block; }
+        header > .header-inner > .header-item > .menu > li a {
+          padding: 5px 5px 5px 10px;
+          text-decoration: none;
+          display: block; }
+          header > .header-inner > .header-item > .menu > li a:hover {
+            background-color: #f1f1f1; }
+
+.main-container > .content {
+  margin: 0 auto;
+  min-height: calc(100vh - 50px - 100px);
+  width: 960px;
+  padding: 30px 0; }
+
+footer {
+  background: #ddd;
+  height: 100px;
+  display: flex;
+  align-items: center; }
+  footer > .footer-inner {
+    width: 960px;
+    margin: 0 auto; }

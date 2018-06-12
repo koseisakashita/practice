@@ -48,21 +48,29 @@
 
 	hoge = __webpack_require__(1);
 
-	window.main = window.main || {};
-
 	main = class main {
 	  constructor(opt) {
-	    this.opt = opt || {};
-	    this.hoge = new hoge();
+	    this.opt = $.extend(true, {
+	      headerElm: null
+	    }, opt || {});
+	    // イベント登録
+	    $(this.opt.headerElm).on('click', (e) => {
+	      return this.switchDropdownMenu();
+	    });
 	  }
 
 	  init() {
-	    return this.hoge.echo(this.opt);
+	    return hoge.echo(this.opt);
+	  }
+
+	  // ドロップダウンメニューの表示を切り替える。
+	  switchDropdownMenu() {
+	    return $(this.opt.headerElm).next('ul').toggleClass('open');
 	  }
 
 	};
 
-	window.main = main;
+	window.main = window.main || main;
 
 
 /***/ }),
@@ -76,7 +84,7 @@
 	    console.log('hogeをインスタンス化したよ');
 	  }
 
-	  echo(str) {
+	  static echo(str) {
 	    return console.log(str);
 	  }
 

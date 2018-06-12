@@ -1,15 +1,22 @@
 
 hoge = require './hoge'
 
-window.main = window.main || {}
 
 class main
 
 	constructor: (opt) ->
-		@opt = opt || {}
-		@hoge = new hoge()
+		@opt = $.extend true, 
+			headerElm: null
+		, opt || {}
+
+		# イベント登録
+		$(@opt.headerElm).on 'click', (e) => @switchDropdownMenu()
 
 	init: () ->
-		@hoge.echo @opt
+		hoge.echo @opt
 
-window.main = main
+	# ドロップダウンメニューの表示を切り替える。
+	switchDropdownMenu: () ->
+		$(@opt.headerElm).next('ul').toggleClass 'open'
+
+window.main = window.main || main

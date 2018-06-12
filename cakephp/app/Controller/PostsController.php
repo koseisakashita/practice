@@ -60,7 +60,7 @@ class PostsController extends AppController {
             $this->Post->create();
             if ($this->Post->save($this->request->data)) {
                 $this->Flash->success('投稿が追加されました。');
-                return $this->redirect(array('action' => 'index'));
+                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error('投稿が追加されませんでした。');
         }

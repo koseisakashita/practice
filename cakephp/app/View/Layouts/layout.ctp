@@ -31,7 +31,8 @@
 		echo $this->html->css('base');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
-	?>
+		echo $this->Html->script('main');
+	?>	
 	<script src="/practice/cakephp/app/webroot/js/lib/underscore-min.js"></script>
 	<script src="/practice/cakephp/app/webroot/js/lib/jquery.min.js"></script>
 	<script src="/practice/cakephp/app/webroot/js/lib/backbone-min.js"></script>
@@ -39,7 +40,7 @@
 </head>
 <body>
 	<?php echo $this->Element('header');?>
-	<main class="container">
+	<main class="main-container">
 		<div class="content">
 			<?php echo $this->Flash->render(); ?>
 			<?php echo $this->fetch('content'); ?>
