@@ -7,14 +7,15 @@
 ?>
 
 
-<h1>Blog posts</h1>
-<p><?php echo $this->Html->link('Add Post',['action' => 'add']); ?></p>
+<h1>投稿一覧</h1>
+<p><?php echo $this->Html->link('投稿を追加する',['action' => 'add'], ['class' => 'btn btn-primary']); ?></p>
 <table>
     <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Actions</th>
-        <th>Created</th>
+        <th>id</th>
+        <th>タイトル</th>
+        <th>編集</th>
+        <th>削除</th>
+        <th>作成日時</th>
     </tr>
 
 <!-- ここで $posts 配列をループして、投稿情報を表示 -->
@@ -34,19 +35,21 @@
         </td>
         <td>
             <?php
+                echo $this->Html->link('Edit', [
+                        'action' => 'edit',
+                        $post['Post']['id']
+                    ]
+                );
+            ?>
+        </td>
+        <td>
+            <?php
                 echo $this->Form->postLink(
                     'Delete',[
                         'action' => 'delete',
                         $post['Post']['id']
                     ],[
                         'confirm' => '削除してよろしいですか？'
-                    ]
-                );
-            ?>
-            <?php
-                echo $this->Html->link('Edit', [
-                        'action' => 'edit',
-                        $post['Post']['id']
                     ]
                 );
             ?>

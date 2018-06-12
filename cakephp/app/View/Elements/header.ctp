@@ -4,7 +4,7 @@
 			'controller' => 'posts',
 			'action' => 'index'
 		]);?>
-		<div class="header-item">
+		<div class="header-item" id="dropdownHeader">
 			<div class="link">
 				<?php echo $this->Session->read('Auth.User.username');?>さん
 			</div>
@@ -19,11 +19,3 @@
 		</div>
 	</div>
 </header>
-<script>
-(function(){
-	var opt = {
-		headerElm: '.header-item > .link'
-	};
-	window.main = new main(opt);
-})();
-</script>

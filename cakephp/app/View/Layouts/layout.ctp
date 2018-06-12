@@ -48,5 +48,14 @@
 	</main>
 	<?php echo $this->Element('footer');?>
 	<?php echo $this->element('sql_dump'); ?>
+	<script>
+	(function(){
+		var opt = {
+			headerElm: 'header',
+			dropdownHeaderElm: '#dropdownHeader > .link'
+		};
+		window.main = new main(opt);
+	})();
+	</script>
 </body>
 </html>

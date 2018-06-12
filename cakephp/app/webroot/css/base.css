@@ -6851,7 +6851,7 @@ header {
       position: relative; }
       header > .header-inner > .header-item > .link {
         cursor: pointer;
-        margin-bottom: 4px; }
+        margin-bottom: 6px; }
         header > .header-inner > .header-item > .link:after {
           content: '▼';
           font-size: 11px;
@@ -6863,7 +6863,8 @@ header {
         margin: 0;
         position: absolute;
         top: 50px;
-        width: 130px;
+        right: 0;
+        width: 120px;
         min-height: 40px;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;

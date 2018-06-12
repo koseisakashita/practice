@@ -42,55 +42,52 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-	var hoge, main;
-
-	hoge = __webpack_require__(1);
+	// hoge = require './hoge'
+	var main;
 
 	main = class main {
 	  constructor(opt) {
 	    this.opt = $.extend(true, {
-	      headerElm: null
+	      headerElm: null,
+	      dropdownHeaderElm: null
 	    }, opt || {});
+	    // 起動処理を実行する。
+	    this.init();
 	    // イベント登録
-	    $(this.opt.headerElm).on('click', (e) => {
-	      return this.switchDropdownMenu();
+	    $(this.opt.dropdownHeaderElm).on('click', (e) => {
+	      return this.switchDropdownMenu(e.currentTarget);
+	    });
+	    $(window).on('scroll', (e) => {
+	      return this.fixedHeader();
 	    });
 	  }
 
 	  init() {
-	    return hoge.echo(this.opt);
+	    // ヘッダーの高さを取得する。
+	    return this.headerHeight = $(this.opt.headerElm).innerHeight();
 	  }
 
 	  // ドロップダウンメニューの表示を切り替える。
-	  switchDropdownMenu() {
-	    return $(this.opt.headerElm).next('ul').toggleClass('open');
+	  switchDropdownMenu(el) {
+	    return $(el).next('.menu').toggleClass('open');
+	  }
+
+	  // ヘッダーを固定する。
+	  fixedHeader() {
+	    var currentOffset;
+	    currentOffset = $(window).scrollTop();
+	    if (currentOffset > 50) {
+	      return $(this.opt.headerElm).addClass('fixed');
+	    } else {
+	      return $(this.opt.headerElm).removeClass('fixed');
+	    }
 	  }
 
 	};
 
 	window.main = window.main || main;
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-	var hoge;
-
-	hoge = class hoge {
-	  constructor() {
-	    console.log('hogeをインスタンス化したよ');
-	  }
-
-	  static echo(str) {
-	    return console.log(str);
-	  }
-
-	};
-
-	module.exports = hoge;
 
 
 /***/ })
