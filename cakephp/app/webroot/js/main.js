@@ -66,7 +66,9 @@
 
 	  init() {
 	    // ヘッダーの高さを取得する。
-	    return this.headerHeight = $(this.opt.headerElm).innerHeight();
+	    this.headerHeight = $(this.opt.headerElm).innerHeight();
+	    // ヘッダーを固定する。
+	    return this.fixedHeader();
 	  }
 
 	  // ドロップダウンメニューの表示を切り替える。
@@ -78,10 +80,12 @@
 	  fixedHeader() {
 	    var currentOffset;
 	    currentOffset = $(window).scrollTop();
-	    if (currentOffset > 50) {
-	      return $(this.opt.headerElm).addClass('fixed');
+	    if (currentOffset > this.headerHeight) {
+	      $(this.opt.headerElm).addClass('fixed');
+	      return $('.main-container').addClass('fixed-margin');
 	    } else {
-	      return $(this.opt.headerElm).removeClass('fixed');
+	      $(this.opt.headerElm).removeClass('fixed');
+	      return $('.main-container').removeClass('fixed-margin');
 	    }
 	  }
 

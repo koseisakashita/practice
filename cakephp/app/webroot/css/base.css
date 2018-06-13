@@ -6826,10 +6826,27 @@ body {
 .input-width800 {
   width: 800px; }
 
+@keyframes slideDown {
+  0% {
+    top: -50px; }
+  100% {
+    top: 0; } }
+
 header {
   height: 50px;
   background-color: #005eba;
-  padding: 0 20px; }
+  padding: 0 20px;
+  width: 100%;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2); }
+  header.fixed {
+    top: 0;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.98);
+    animation: slideDown .3s; }
+    header.fixed > .header-inner > a {
+      color: #333; }
+    header.fixed > .header-inner > .header-item {
+      color: #333; }
   header > .header-inner {
     display: flex;
     align-items: center;
@@ -6862,7 +6879,7 @@ header {
         font-size: 13px;
         margin: 0;
         position: absolute;
-        top: 50px;
+        top: 51px;
         right: 0;
         width: 120px;
         min-height: 40px;
@@ -6879,6 +6896,9 @@ header {
           display: block; }
           header > .header-inner > .header-item > .menu > li a:hover {
             background-color: #f1f1f1; }
+
+.main-container.fixed-margin {
+  margin-top: 50px; }
 
 .main-container > .content {
   margin: 0 auto;
