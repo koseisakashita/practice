@@ -1,17 +1,12 @@
 // インポートファイル
 @import 'settings/color';
+@import 'settings/animation';
 
 $header-height: 50px;
 $content-width: 960px;
 $footer-height: 100px;
 $menu-height: 40px;
 
-@keyframes slideDown {
-    0%{
-        top: -50px;
-    }
-    100%{top: 0;}
-}
 
 // レイアウトスタイル
 header{
@@ -19,12 +14,13 @@ header{
     background-color: $main-color;
 	padding: 0 20px;
     width: 100%;
-    box-shadow: 0px 1px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
 
     // FIX固定のスタイル
     &.fixed{
         top: 0;
         position:fixed;
+        z-index: 1000;
         background: rgba(255, 255, 255, 0.98);
         animation: slideDown .3s;
         >.header-inner >a{
@@ -106,6 +102,14 @@ header{
         min-height: calc(100vh - #{$header-height} - #{$footer-height});
         width: $content-width;
         padding: 30px 0;
+        // フラッシュメッセージ
+        .message{
+            &.success{
+                background-color: lightYellow;
+                border: 1px solid #E6DB55;
+                padding: 10px;
+            }
+        }
     }
 }
 

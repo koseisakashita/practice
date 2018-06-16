@@ -25,7 +25,6 @@ class main
 		# ヘッダーを固定する。
 		@fixedHeader()
 
-
 	# ドロップダウンメニューの表示を切り替える。
 	switchDropdownMenu: (el) ->
 		$(el).next('.menu').toggleClass 'open'

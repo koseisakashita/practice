@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/* ------------------------------------------
+// 投稿追加ページ
+--------------------------------------------*/
+.posts-add-container > .p-head-area {
+  display: flex;
+  margin: 30px 0; }
+  .posts-add-container > .p-head-area h1 {
+    margin: 0; }
+
+.posts-add-container .input-title,
+.posts-add-container .input-body {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 30px; }
+  .posts-add-container .input-title > label,
+  .posts-add-container .input-body > label {
+    flex: 0 0 100px; }
+
+.posts-add-container .submit {
+  width: 500px;
+  text-align: center; }
+  .posts-add-container .submit > button {
+    padding: 10px 40px; }

@@ -17,10 +17,13 @@ module.exports = {
   },
   module:{
     loaders: [                                           
-      {test: /\.coffee$/, loader: 'coffee-loader'}//coffeescriptをコンパイルするための設定            
-    ]
+      {test: /\.coffee$/, loader: 'babel-loader!coffee-loader'},//coffeescriptをコンパイルするための設定
+    ],
+    options: {
+      presets: ['es2015']
+    }
   },
   plugins: [
-      new webpack.optimize.UglifyJsPlugin(),
+      // new webpack.optimize.UglifyJsPlugin(),
   ]
 }

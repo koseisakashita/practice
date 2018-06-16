@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* ------------------------------------------
+// 投稿詳細ページ
+--------------------------------------------*/
+.posts-view-container > .p-head-area {
+  margin: 30px 0; }
+  .posts-view-container > .p-head-area h1 {
+    margin: 0; }
+  .posts-view-container > .p-head-area > p {
+    font-size: 14px;
+    margin-top: 15px; }

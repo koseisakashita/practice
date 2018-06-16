@@ -1,0 +1,31 @@
+/* ------------------------------------------
+// 投稿追加ページ
+--------------------------------------------*/
+
+.posts-edit-container{
+	>.p-head-area{
+		display: flex;
+		margin: 30px 0;
+		h1{
+			margin: 0;
+		}
+	}
+	.input-title,
+	.input-body{
+		display: flex;
+		align-items: baseline;
+		margin-bottom: 30px;
+		>label{
+			flex: 0 0 100px;
+		}
+	}
+	.input-title{}
+	.input-body{}
+	.submit{
+		width: 500px;
+		text-align: center;
+		>button{
+			padding: 10px 40px;
+		}
+	}
+}
