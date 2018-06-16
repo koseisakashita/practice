@@ -25,8 +25,6 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('base');
-
 		echo $this->fetch('meta');
 		echo $this->html->css('base');
 		echo $this->fetch('css');

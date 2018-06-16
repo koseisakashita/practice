@@ -37,6 +37,8 @@ class PostsController extends AppController {
 
     // 投稿一覧ページ
     public function index() {
+        // 投稿データを取得する「。
+        $posts = [];
         $posts = $this->Post->find('all');
         $this->set('posts', $posts);
     }
@@ -66,7 +68,7 @@ class PostsController extends AppController {
         }
     }
 
-    // 投稿編集ページ
+    // 投稿編集ページw
     public function edit($id = null) {
         if (!$id) {
             throw new NotFoundException('投稿記事が見つかりません。');
