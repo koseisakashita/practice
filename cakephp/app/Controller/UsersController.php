@@ -99,6 +99,7 @@ class UsersController extends AppController {
     }
 
     public function add() {
+
     	$this->layout = 'fnt';
     	$postData = $this->request->data;
 
@@ -138,24 +139,34 @@ class UsersController extends AppController {
 
         } elseif($mode === 'do'){
 
+            // トランザクションを開始する。
+            $this->User->begin();
+
         	// バリデートチェックをする。
         	$this->User->validate = $this->User->user_addValidate;
+
         	$validateRes = $this->User->saveAll($postData,['validate' => 'only']);
+
         	// バリデートエラーの際はリターンする。
         	if(!$validateRes){
+                $this->User->rollback();
         		return;
         	}
 
             $this->User->create();
 
             if ($this->User->save($postData)) {
-                
+                // トランザクションを確定させる。
+                $this->User->commit();
+
     			$this->render('add_step3');
 				return;
+            } else {
+                $this->User->rollback();
+                $this->Flash->error('ユーザーの追加ができませんでした。'
+                );
+    			return;
             }
-            $this->Flash->error('ユーザーの追加ができませんでした。'
-            );
-			return;
         }
     }
 
