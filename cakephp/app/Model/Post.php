@@ -32,10 +32,12 @@ App::uses('AppModel', 'Model');
 class Post extends AppModel {
     public $validate = array(
         'title' => array(
-            'rule' => 'notBlank'
+            'rule' => 'notBlank',
+            'message' => '何か入力してください。'
         ),
         'body' => array(
-            'rule' => 'notBlank'
+            'rule' => 'notBlank',
+            'message' => '何か入力してください。'
         )
     );
 }

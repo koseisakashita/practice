@@ -1,8 +1,12 @@
 /* ------------------------------------------
-// 投稿追加ページ
+// 投稿編集ページ
 --------------------------------------------*/
 
 .posts-edit-container{
+	.error-message{
+		margin-left: 15px;
+		color: #b70000;
+	}
 	>.p-head-area{
 		display: flex;
 		margin: 30px 0;

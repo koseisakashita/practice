@@ -1,7 +1,11 @@
 @charset "UTF-8";
 /* ------------------------------------------
-// 投稿追加ページ
+// 投稿編集ページ
 --------------------------------------------*/
+.posts-edit-container .error-message {
+  margin-left: 15px;
+  color: #b70000; }
+
 .posts-edit-container > .p-head-area {
   display: flex;
   margin: 30px 0; }

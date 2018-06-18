@@ -6906,10 +6906,14 @@ header {
   min-height: calc(100vh - 50px - 100px);
   width: 960px;
   padding: 30px 0; }
-  .main-container > .content .message.success {
-    background-color: lightYellow;
-    border: 1px solid #E6DB55;
+  .main-container > .content .message {
     padding: 10px; }
+    .main-container > .content .message.success {
+      background-color: lightYellow;
+      border: 1px solid #E6DB55; }
+    .main-container > .content .message.error {
+      background-color: #fde7e7;
+      border: 1px solid #e65555; }
 
 footer {
   background: #ddd;

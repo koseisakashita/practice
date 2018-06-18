@@ -104,10 +104,14 @@ header{
         padding: 30px 0;
         // フラッシュメッセージ
         .message{
+            padding: 10px;
             &.success{
                 background-color: lightYellow;
                 border: 1px solid #E6DB55;
-                padding: 10px;
+            }
+            &.error{
+                background-color: #fde7e7;
+                border: 1px solid #e65555;
             }
         }
     }
