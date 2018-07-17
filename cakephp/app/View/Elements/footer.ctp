@@ -9,6 +9,6 @@
 		headerElm: 'header',
 		dropdownHeaderElm: '#dropdownHeader > .link'
 	};
-	window.main = new main(opt);
+	new main(opt);
 })();
 </script>

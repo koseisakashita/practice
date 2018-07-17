@@ -29,11 +29,11 @@
 		echo $this->html->css('base');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
-		echo $this->Html->script('main');
 	?>	
 	<script src="/practice/cakephp/app/webroot/js/lib/underscore-min.js"></script>
 	<script src="/practice/cakephp/app/webroot/js/lib/jquery.min.js"></script>
 	<script src="/practice/cakephp/app/webroot/js/lib/backbone-min.js"></script>
+	<?php echo $this->Html->script('main');?>
 
 </head>
 <body>
